@@ -4,6 +4,10 @@ body {
   margin: 0 auto;
 }
 
+.not-selectable {
+  user-select: none;
+}
+
 /* HEADER */
 #top-bar {
   display: flex;
@@ -16,6 +20,7 @@ body {
   font-size: 20px;
   display: inline-block;
   white-space: nowrap;
+  margin-left: 10px;
 }
 
 #title-second-part {
@@ -33,6 +38,7 @@ input[type="text"] {
 
 nav {
   justify-content: center;
+  margin-right: 10px;
 }
 
 nav ul {
@@ -53,6 +59,7 @@ nav ul li:first-child {
 .navigation-button {
   border-radius: 10px;
   padding: 15px;
+  white-space: nowrap;
   background-color: transparent;
   font-size: 17px;
   cursor: pointer;
@@ -80,6 +87,38 @@ nav ul li:first-child {
   color: #FF385C;
 }
 
+/* MOVIES */
+#movies:first-child {
+  margin-top: 30px;
+  padding-left: 10px;
+}
+
+#movies span {
+  font-size: 18px;
+  text-transform: uppercase;
+  padding-left: 5px;
+  border-left: 3px solid #FF385C;
+}
+
+#movie-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  padding-left: 0;
+}
+
+#movie-container ul li {
+  list-style: none;
+}
+
+
+.movie-card img {
+  width: 15vw;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  border: 1px solid black;
+
+}
+
 @media screen and (max-width: 1000px) {
   #introduction p {
     font-size: 40px;
@@ -94,6 +133,13 @@ nav ul li:first-child {
   #introduction p {
     font-size: 35px;
     width: 50%;
-    height: 80%;
+  }
+
+  #top-bar p {
+    font-size: 15px;
+  }
+
+  .navigation-button {
+    font-size: 10px;
   }
 }
