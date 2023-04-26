@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 body {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: sans-serif;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -103,7 +105,8 @@ nav ul li:first-child {
 #movie-container ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 2em;
+  justify-content: center;
+  gap: 1em;
   padding-left: 0;
 }
 
@@ -113,10 +116,24 @@ nav ul li:first-child {
 
 
 .movie-card img {
-  width: 15vw;
-  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
-  border: 1px solid black;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 7px;
+  transition: filter 0.3s ease-out;
+}
 
+.movie-card {
+  width: 30vw;
+  max-width: 180px;
+  border: 2px solid whitesmoke;
+  border-radius: 10px;
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.movie-card img:hover {
+  filter: brightness(70%);
 }
 
 @media screen and (max-width: 1000px) {
@@ -131,15 +148,45 @@ nav ul li:first-child {
 
 @media screen and (max-width: 600px) {
   #introduction p {
-    font-size: 35px;
-    width: 50%;
+    font-size: 40px;
+    width: 60%;
   }
 
   #top-bar p {
-    font-size: 15px;
+    font-size: 17px;
+  }
+
+  #top-bar {
+    height: 100px;
   }
 
   .navigation-button {
-    font-size: 10px;
+    font-size: 13px;
   }
+}
+
+/* FOOTER */
+footer {
+  background-color: wheat;
+}
+
+footer > ul {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+footer li {
+  display: inline-block;
+}
+
+footer > ul > li:first-child {
+  width: 87%;
+}
+
+#social-media li:not(:last-child) {
+  margin-right: 10px;
+}
+
+#social-media li {
+  font-size: 20px;
 }

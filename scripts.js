@@ -1,25 +1,18 @@
-// const button = document.getElementById("btn");
-// const searchField = document.getElementsByTagName("input")[0];
-// const storage = document.getElementById("result-container")
+const movieContainer = document.querySelector("#movie-container ul");
+const movieHTML = `<div class="movie-card">
+        <a href="#"><img src="https://cdn.shopify.com/s/files/1/0037/8008/3782/products/image2.jpg?v=1654535114"
+            alt="movie image"></a>
+        <div class="information">
+            <div style="display: flex; gap:10px; justify-content: center;">
+                <p class="not-selectable"><i class="fa-solid fa-star" style="color: #F5C518;"></i> <b>7.8</b> </p>
+                <p class="not-selectable">2023</p>
+            </div>
+            <p style="margin-top: 0; text-align: center; font-size: 15px; font-family: Roboto;">Avatar the way of Water</p>
+        </div>
+    </div>`;
 
-// function getSeachData() {
-//     return searchField.value;
-// }
-
-// button.addEventListener("click", function() {
-//     let result = getSeachData();
-//     let currentDiv = document.createElement("div");
-//     let node = document.createTextNode(result);
-//     if (!node.textContent) {
-//         children = storage.children
-//         console.log(children)
-//         for (let i=0; i<children.length; i++) {
-//             current_element = children[i]
-//             console.log(`current element is ${current_element.textContent}`)
-//         }
-//         currentDiv.append("No items");
-//     }
-//     currentDiv.append(node)
-//     storage.appendChild(currentDiv);
-    
-// });
+for (let i = 0; i <= 10; i++) {
+    const movieCardTemplate = document.createElement("li");
+    movieCardTemplate.innerHTML = movieHTML;
+    movieContainer.append(movieCardTemplate);
+}
