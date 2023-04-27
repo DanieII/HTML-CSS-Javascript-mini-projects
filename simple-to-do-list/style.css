@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+body {
+    max-width: 1300px;
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    border: 1px solid black;
+}
+
+header p {
+    text-align: center;
+    font-size: 20px;
+}
+
+#tasks-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#add-task-section {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+#add-task-section input {
+    padding: 10px;
+    font-size: 19px;
+    border-radius: 5px;
+    border-style: solid;
+    user-select: none;
+}
+
+#tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task {
+    display: flex;
+}
+
+.complete-button {
+    height: 10%;
+    margin: auto 0;
+    margin-right: 10px;
+    font-size: 15px;
+    background-color: white;
+    transition: filter 0.2s;
+}
+
+.complete-button:hover {
+    filter: brightness(70%);
+}
