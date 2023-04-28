@@ -6,10 +6,6 @@ body {
     font-family: 'Inter', sans-serif;
 }
 
-header {
-    border: 1px solid black;
-}
-
 header p {
     text-align: center;
     font-size: 20px;
@@ -19,6 +15,7 @@ header p {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-left: 20px;
 }
 
 #add-task-section {
@@ -35,6 +32,17 @@ header p {
     user-select: none;
 }
 
+#add-task-section button {
+    margin-left: 15px;
+    border-radius: 5px;
+    background: transparent;
+}
+
+#add-task-section button:hover {
+    background-color: lightgray;
+    color: white;
+}
+
 #tasks {
     display: flex;
     flex-direction: column;
@@ -43,6 +51,7 @@ header p {
 
 .task {
     display: flex;
+    white-space: pre-line;
 }
 
 .complete-button {
@@ -52,6 +61,7 @@ header p {
     font-size: 15px;
     background-color: white;
     transition: filter 0.2s;
+    border: none;
 }
 
 .complete-button:hover {
