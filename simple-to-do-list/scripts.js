@@ -2,17 +2,17 @@
 const inputField = document.querySelector("input");
 const tasks = document.querySelector("#tasks");
 const clearButton = document.querySelector("#add-task-section button");
-let currentTask = false
+let currentTask = false;
 
 
 const getNumberOfTasks = () => {
-    let counter = 0
+    let counter = 0;
     Array.from(tasks.children).forEach(() => {
-        counter++
-    })
+        counter++;
+    });
 
-    return counter
-}
+    return counter;
+};
 
 
 // HTML structure of each task
@@ -47,7 +47,7 @@ const addTask = (task) => {
         currentTask.parentNode.classList.add("focused");
         inputField.focus();
     });
-}
+};
 
 
 // A function that takes all the tasks inside the tasks container and saves each description on the localStorage
@@ -94,13 +94,14 @@ inputField.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         const task = inputField.value;
         if (!currentTask) {
-            addTask(task)
+            addTask(task);
         }
         else {
             currentTask.innerHTML = task;
             currentTask.parentNode.classList.remove("focused");
             inputField.value = "";
             currentTask = false;
+            updateTasks()
         };
     };
 }
