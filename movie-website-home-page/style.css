@@ -171,6 +171,8 @@ footer {
 }
 
 footer > ul {
+  display: flex;
+  justify-content: space-between;
   padding-top: 15px;
   padding-bottom: 15px;
 }
@@ -179,11 +181,11 @@ footer li {
   display: inline-block;
 }
 
-footer > ul > li:first-child {
-  width: 87%;
+#social-media {
+  float: right;
 }
 
-#social-media li:not(:last-child) {
+#social-media li {
   margin-right: 10px;
 }
 
