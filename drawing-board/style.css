@@ -11,14 +11,14 @@ body {
   height: 90vh;
 }
 
-input {
+input[type="range"] {
   -webkit-appearance: none;
   height: 10px;
   background-color: gray;
   outline: none;
 }
 
-input::-webkit-slider-thumb {
+input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   width: 20px;
   height: 20px;
@@ -31,6 +31,7 @@ input::-webkit-slider-thumb {
 }
 
 #board {
+  position: relative;
   margin-top: 30px;
   display: flex;
   align-items: center;
@@ -47,15 +48,59 @@ input::-webkit-slider-thumb {
 }
 
 .selected {
-  background-color: darkmagenta;
+  transition: 0.2s ease;
+}
+
+#button-container {
+  user-select: none;
 }
 
 #button-container button {
+  user-select: none;
   margin-top: 15px;
   padding: 8px;
-  background: linear-gradient(to bottom right, #660099, #ff99cc);
+  background: linear-gradient(rgb(189,192,197), rgb(233,234,238));
+  border-style: none;
+}
+
+.selected-button {
+  border-style: solid;
 }
 
 #button-container button:first-child {
   margin-right: 10px;
+}
+
+#side-bar {
+  display: none;
+  position: absolute;
+  /* top: 50%; */
+  left: -70px;
+}
+
+#side-bar > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input[type="color"] {
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border: none;
+  background-color: transparent;
+}
+
+#clear {
+  border: none;
+  background-color: transparent;
+  transition: background-color 0.2s;
+  font-size: 15px;
+}
+
+#clear:hover {
+  background-color: gray;
 }
