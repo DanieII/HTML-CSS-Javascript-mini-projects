@@ -7,7 +7,6 @@ const modeButtonContainer = document.querySelector("#button-container");
 const modeButtons = Array.from(modeButtonContainer.children);
 let isMouseDown = false;
 let color = colorPicker.value;
-
 let mode = "Hover Effect"
 
 // Keeping track of the mouse state so multiple blocks can be selected while holding a mouse button
@@ -29,12 +28,66 @@ clearButton.addEventListener("click", () => {
     slider.dispatchEvent(new Event("input"));
 });
 
+board.addEventListener("mouseenter", () => {
+    if (mode === "Drawing") {
+        setDrawingMode();
+    }
+    else {
+        setHoverMode();
+    };
+});
+
+// A function used when the mode is changed to remove the added event listeners to the blocks so the new ones can work
 const refreshBlocks = () => {
-    const blocks = board.children.length - 1;
-    slider.value = 0;
-    slider.dispatchEvent(new Event("input"));
-    slider.value = blocks;
-    slider.dispatchEvent(new Event("input"));
+    const blocks = Array.from(board.children).slice(1);
+    blocks.forEach((element) => {
+        element.removeEventListener("mouseenter", hoverMouseEnter);
+        element.removeEventListener("mouseout", hoverMouseOut);
+        element.removeEventListener("mouseenter", drawingMouseEnter);
+        element.removeEventListener("mousedown", drawingMouseDown);
+    });
+};
+
+// Block events for the hover mode
+
+// Add a random color to the block when the mouse is on it
+const hoverMouseEnter = (e) => {
+    setRandomColor();
+    e.target.style.backgroundColor = color;
+    e.target.classList.add("selected");
+}
+
+// Remove the color when the mouse moves out of the block
+const hoverMouseOut = (e) => {
+    setTimeout(() => {
+        e.target.style.backgroundColor = "transparent";
+        e.target.classList.remove("selected");
+    }, 300);
+}
+
+// BLock events for the drawing mode
+
+// Hovering on blocks while clicked
+const drawingMouseEnter = (e) => {
+    color = colorPicker.value;
+    if (isMouseDown) {
+        e.target.classList.add("selected");
+        e.target.style.backgroundColor = color;
+    };
+};
+
+// Clicking on a block
+const drawingMouseDown = (e) => {
+    // Remove the color if the block is selected
+    if (e.target.classList.contains("selected")) {
+        e.target.style.backgroundColor = "transparent";
+    }
+    // Set the color if clicked on a not selected block
+    else {
+        e.target.style.backgroundColor = color;
+    }
+
+    e.target.classList.toggle("selected");
 };
 
 const setHoverMode = () => {
@@ -42,19 +95,8 @@ const setHoverMode = () => {
     refreshBlocks();
 
     currentChildren.forEach((block) => {
-
-        block.addEventListener("mouseenter", () => {
-            setRandomColor();
-            block.style.backgroundColor = color;
-            block.classList.add("selected");
-        });
-
-        block.addEventListener("mouseout", () => {
-            setTimeout(() => {
-                block.style.backgroundColor = "transparent";
-                block.classList.remove("selected");
-            }, 200);
-        });
+        block.addEventListener("mouseenter", hoverMouseEnter);
+        block.addEventListener("mouseout", hoverMouseOut);
     });
 };
 
@@ -63,28 +105,9 @@ const setDrawingMode = () => {
     refreshBlocks();
 
     currentChildren.forEach((block) => {
-        // Hovering on blocks while clicked
-        block.addEventListener("mouseenter", () => {
-            if (isMouseDown) {
-                block.classList.add("selected");
-                block.style.backgroundColor = color;
-            };
-        });
-
-        // Clicking on a block
-        block.addEventListener("mousedown", () => {
-            // Remove the color if the block is selected
-            if (block.classList.contains("selected")) {
-                block.style.backgroundColor = "transparent";
-            }
-            // Set the color if clicked on a not selected block
-            else {
-                block.style.backgroundColor = color;
-            }
-
-            block.classList.toggle("selected");
-        });
-    })
+        block.addEventListener("mouseenter", drawingMouseEnter);
+        block.addEventListener("mousedown", drawingMouseDown);
+    });
 };
 
 
@@ -94,7 +117,7 @@ modeButtons.forEach(element => {
     if (isHover) {
         element.dispatchEvent(new Event("click"));
     };
-    
+
     element.addEventListener("click", () => {
         modeButtons.forEach((element) => { element.classList.remove("selected-button"); });
         element.classList.add("selected-button");
@@ -124,25 +147,6 @@ const setRandomColor = () => {
     color = colors[Math.floor(Math.random() * colors.length)];
 };
 
-
-
-
-board.addEventListener("mouseenter", () => {
-    if (mode === "Drawing") {
-        setDrawingMode();
-    }
-    else {
-        setHoverMode();
-    };
-});
-
-
-const addBlock = () => {
-    const block = document.createElement("div");
-    block.classList.add("block");
-    board.append(block);
-}
-
 slider.addEventListener("input", (e) => {
     const currentValue = parseInt(e.target.value * 10);
     // -1 Because the side bar shouldn't be counted
@@ -152,7 +156,9 @@ slider.addEventListener("input", (e) => {
     // If slider value is more than the number of blocks increase the amount of blocks
     if (currentValue * 2 > numberOfBlocks) {
         for (let i = 0; i < (currentValue * 2) - numberOfBlocks; i++) {
-            addBlock();
+            const block = document.createElement("div");
+            block.classList.add("block");
+            board.append(block);
         };
     }
 
