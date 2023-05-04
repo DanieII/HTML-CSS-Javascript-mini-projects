@@ -31,13 +31,14 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #board {
+  display: grid;
   position: relative;
   margin-top: 30px;
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 270px;
+  max-width: 270px; */
   user-select: none;
 }
 
@@ -56,14 +57,14 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #button-container button {
-  user-select: none;
+  display: none;
   margin-top: 15px;
   padding: 8px;
   background: linear-gradient(rgb(189,192,197), rgb(233,234,238));
-  border-style: none;
+  border-style: dotted;
 }
 
-.selected-button {
+#button-container button.selected-button {
   border-style: solid;
 }
 
@@ -74,7 +75,7 @@ input[type="range"]::-webkit-slider-thumb {
 #side-bar {
   display: none;
   position: absolute;
-  /* top: 50%; */
+  top: 50%;
   left: -70px;
 }
 
