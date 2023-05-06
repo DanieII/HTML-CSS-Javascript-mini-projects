@@ -7,11 +7,11 @@ const modeButtonContainer = document.querySelector("#button-container");
 const modeButtons = Array.from(modeButtonContainer.children);
 let isMouseDown = false;
 let color = colorPicker.value;
-let mode = "Hover Effect"
+let mode = "Hover Effect";
 
 // Keeping track of the mouse state so multiple blocks can be selected while holding a mouse button
 window.addEventListener("mousedown", (e) => {
-    isMouseDown = true
+    isMouseDown = true;
 });
 
 window.addEventListener("mouseup", (e) => {
@@ -28,12 +28,14 @@ clearButton.addEventListener("click", () => {
     slider.dispatchEvent(new Event("input"));
 });
 
+
+// Setting the mode when the mouse is on the board
 board.addEventListener("mouseenter", () => {
-    if (mode === "Drawing") {
-        setDrawingMode();
+    if (mode === "Hover Effect") {
+        setHoverMode();
     }
     else {
-        setHoverMode();
+        setDrawingMode();
     };
 });
 
@@ -55,7 +57,7 @@ const hoverMouseEnter = (e) => {
     setRandomColor();
     e.target.style.backgroundColor = color;
     e.target.classList.add("selected");
-}
+};
 
 // Remove the color when the mouse moves out of the block
 const hoverMouseOut = (e) => {
@@ -63,7 +65,7 @@ const hoverMouseOut = (e) => {
         e.target.style.backgroundColor = "transparent";
         e.target.classList.remove("selected");
     }, 300);
-}
+};
 
 // BLock events for the drawing mode
 
@@ -85,7 +87,7 @@ const drawingMouseDown = (e) => {
     // Set the color if clicked on a not selected block
     else {
         e.target.style.backgroundColor = color;
-    }
+    };
 
     e.target.classList.toggle("selected");
 };
@@ -111,9 +113,9 @@ const setDrawingMode = () => {
 };
 
 
-// Making the mode buttons change change the mode when clicked by saving their text to the mode variable
+// Making the mode buttons change change the mode when clicked
 modeButtons.forEach(element => {
-    const isHover = element.textContent === "Hover Effect" ? true : false
+    const isHover = element.textContent === "Hover Effect" ? true : false;
     if (isHover) {
         element.dispatchEvent(new Event("click"));
     };
@@ -121,22 +123,14 @@ modeButtons.forEach(element => {
     element.addEventListener("click", () => {
         modeButtons.forEach((element) => { element.classList.remove("selected-button"); });
         element.classList.add("selected-button");
-
-        if (isHover) {
-            setHoverMode();
-        }
-        else {
-            setDrawingMode();
-        }
         mode = element.textContent;
-
     });
 });
 
 
 // Changing the visibility of the the buttons around the board based on the boolean provided
 const toggleButtons = (remove) => {
-    sideBar.style.display = remove ? "none" : "block"
+    sideBar.style.display = remove ? "none" : "block";
     modeButtons.forEach(element => {
         element.style.display = remove ? "none" : "inline-block";
     });
