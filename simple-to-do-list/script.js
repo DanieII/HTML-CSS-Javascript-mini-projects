@@ -17,7 +17,7 @@ const getNumberOfTasks = () => {
 
 // HTML structure of each task
 const getElementHTML = (task) => {
-    return `<button class="complete-button"><i class="fa-solid fa-check fa-flip" style="color: #000000;"></i></button>
+    return `<button class="complete-button"><i class="fa-solid fa-check" style="color: #000000;"></i></button>
     <button class="edit-button"><i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></button>
     <p>${task}</p>`;
 };

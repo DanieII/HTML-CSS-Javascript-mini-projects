@@ -26,7 +26,7 @@ header p {
 
 #add-task-section input {
     padding: 10px;
-    font-size: 19px;
+    font-size: 20px;
     border-radius: 5px;
     border-style: solid;
     user-select: none;
@@ -36,6 +36,7 @@ header p {
     margin-left: 15px;
     border-radius: 5px;
     background: transparent;
+    font-size: 20px;
 }
 
 #add-task-section button:hover {
@@ -59,11 +60,10 @@ header p {
     margin-right: 10px;
     height: 10%;
     margin: auto 0;
-    font-size: 15px;
     background-color: white;
     transition: filter 0.2s;
     border: none;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .task p {
@@ -71,6 +71,7 @@ header p {
     overflow-wrap: break-word;
     word-wrap: break-word;
     word-break: break-word;
+    font-size: 20px;
 }
 
 .complete-button:hover {
