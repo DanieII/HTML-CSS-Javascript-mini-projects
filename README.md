@@ -1,4 +1,4 @@
 # HTML-CSS-Javascript-mini-projects
 
-## To Do List Page 📝
+## Check out the projects here 📍
 https://danieii.github.io/HTML-CSS-Javascript-mini-projects/
